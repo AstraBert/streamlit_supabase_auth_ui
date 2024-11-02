@@ -1,6 +1,4 @@
 import streamlit as st
-import json
-import os
 from streamlit_lottie import st_lottie
 from streamlit_option_menu import option_menu
 from streamlit_cookies_manager import EncryptedCookieManager
@@ -16,6 +14,7 @@ from .utils import generate_random_passwd
 from .utils import send_passwd_in_email
 from .utils import change_passwd
 from .utils import check_current_passwd
+from .utils import welcome_w_email
 
 
 class __login__:
@@ -54,33 +53,6 @@ class __login__:
             st.stop()   
 
 
-    def check_auth_json_file_exists(self, auth_filename: str) -> bool:
-        """
-        Checks if the auth file (where the user info is stored) already exists.
-        """
-        file_names = []
-        for path in os.listdir('./'):
-            if os.path.isfile(os.path.join('./', path)):
-                file_names.append(path)
-
-        present_files = []
-        for file_name in file_names:
-            if auth_filename in file_name:
-                present_files.append(file_name)
-                    
-            present_files = sorted(present_files)
-            if len(present_files) > 0:
-                return True
-        return False
-
-    def get_username(self):
-        if st.session_state['LOGOUT_BUTTON_HIT'] == False:
-            fetched_cookies = self.cookies
-            if '__streamlit_login_signup_ui_username__' in fetched_cookies.keys():
-                username=fetched_cookies['__streamlit_login_signup_ui_username__']
-                return username
- 
-
     def login_widget(self) -> None:
         """
         Creates the login widget, checks and sets cookies, authenticates the users.
@@ -116,7 +88,7 @@ class __login__:
                         self.cookies['__streamlit_login_signup_ui_username__'] = username
                         self.cookies.save()
                         del_login.empty()
-                        st.experimental_rerun()
+                        st.rerun()
 
 
     def animation(self) -> None:
@@ -168,6 +140,7 @@ class __login__:
                         if unique_email_check == True:
                             if unique_username_check == True:
                                 register_new_usr(name_sign_up, email_sign_up, username_sign_up, password_sign_up)
+                                welcome_w_email(self.auth_token, username_sign_up, email_sign_up, self.company_name)
                                 st.success("Registration Successful!")
 
 
@@ -243,7 +216,7 @@ class __login__:
                 st.session_state['LOGGED_IN'] = False
                 self.cookies['__streamlit_login_signup_ui_username__'] = '1c9a923f-fb21-4a91-b3f3-5f18e3f01182'
                 del_logout.empty()
-                st.experimental_rerun()
+                st.rerun()
         
 
     def nav_sidebar(self):
@@ -290,12 +263,6 @@ class __login__:
 
         if 'LOGOUT_BUTTON_HIT' not in st.session_state:
             st.session_state['LOGOUT_BUTTON_HIT'] = False
-
-        auth_json_exists_bool = self.check_auth_json_file_exists('_secret_auth_.json')
-
-        if auth_json_exists_bool == False:
-            with open("_secret_auth_.json", "w") as auth_json:
-                json.dump([], auth_json)
 
         main_page_sidebar, selected_option = self.nav_sidebar()
 

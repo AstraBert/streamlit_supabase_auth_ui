@@ -1,2 +1,4 @@
-venv
-_secret_auth_.json
+venv/
+streamlit_supabase_auth_ui/__pycache__/
+
+# REMEMBER TO INCLUDE ALSO .streamlit/secrets.toml TO YOUR .gitignore WHEN PUSHING TO PUBLIC/SHARED REPOSITORIES!
