@@ -4,10 +4,17 @@
 </div>
 <br>
 <div align="center">
-    <img src="imgs/supabase_logo.png" alt="Supabase Logo" width="100" style="margin-right: 10px;">
-    <img src="imgs/plus.jpg" alt="plus" width="30" style="margin-right: 10px;">
-    <img src="imgs/streamlit_logo.jpg" alt="Streamlit Logo" width="100">
+    <img src="https://img.shields.io/github/languages/top/AstraBert/streamlit_supabase_auth_ui" alt="GitHub top language">
+    <img src="https://img.shields.io/github/commit-activity/t/AstraBert/streamlit_supabase_auth_ui" alt="GitHub commit activity">
+    <img src="https://img.shields.io/pypi/pyversions/streamlit_supabase_auth_ui" alt="Static Badge">
+    <img src="https://img.shields.io/badge/Release-v0.0.0-blue" alt="Static Badge">
+    <br>
+    <br>
+    <img src="./imgs/supabase_logo.png" alt="Supabase Logo" width="100" style="margin-right: 10px;">
+    <img src="./imgs/plus.jpg" alt="plus" width="30" style="margin-right: 10px;">
+    <img src="./imgs/streamlit_logo.jpg" alt="Streamlit Logo" width="100">
 </div>
+
 
 ### Purpose and Inspiration
 
@@ -63,6 +70,8 @@ To do so, we use the already mentioned Courier, and so we need to:
 
 ### Create your application
 
+#### 1. Build from source
+
 We now want to create our Streamlit application with Supabase authentication and user management, and, in order to do so, we:
 
 1. Clone this repository and go inside it:
@@ -89,7 +98,7 @@ You can obviously customize the Streamlit application as much as you want, you w
 
 ```python
 import streamlit as st
-from .streamlit_login_auth_ui.widgets import __login__
+from .streamlit_supabase_auth_ui.widgets import __login__
 
 __login__obj = __login__(auth_token = st.secrets["courier_auth_token"],
                     company_name = "YOUR-ORG-NAME",
@@ -105,4 +114,47 @@ if LOGGED_IN == True:
    ### Your Streamlit app here!
 ```
 
-### To be completed!
+#### 2. Get PyPi package
+
+We made `streamlit-supabase-auth-ui` also a python package available on PyPi, that you can find [here](https://pypi.org/project/streamlit-supabase-auth-ui/).
+
+To get it, it is sufficient to run:
+
+```bash
+python3 -m pip install streamlit-supabase-auth-ui
+```
+
+And the installation process will take care of mounting all the necessary dependencies✅
+
+You can then simply import the package in your code:
+
+```python
+import streamlit as st
+from streamlit_supabase_auth_ui.widgets import __login__
+
+__login__obj = __login__(auth_token = st.secrets["courier_auth_token"],
+                    company_name = "YOUR-ORG-NAME",
+                    width = 200, height = 250,
+                    logout_button_name = 'Logout', hide_menu_bool = False,
+                    hide_footer_bool = False,
+                    lottie_url = 'https://assets2.lottiefiles.com/packages/lf20_jcikwtux.json')
+```
+
+### Live demo
+
+Find a live demo on [HuggingFace Spaces](https://huggingface.co/spaces/as-cle-bert/streamlit-supabase-auth-ui).
+
+### Contributions
+
+Contributions are more than welcome! See [contribution guidelines](./CONTRIBUTING.md) for more information :)
+
+### Funding
+
+If you found this project useful, please consider to [fund it](https://github.com/sponsors/AstraBert) and make it grow: let's support open-source together!😊
+
+
+### License and rights of usage
+
+This project is provided under [MIT license](./LICENSE): it will always be open-source and free to use.
+
+If you use this project, please cite the author: [Astra Clelia Bertelli](https://astrabert.vercel.app)

@@ -1,5 +1,5 @@
 import streamlit as st
-from streamlit_login_auth_ui.widgets import __login__
+from streamlit_supabase_auth_ui.widgets import __login__
 
 __login__obj = __login__(auth_token = st.secrets["courier_auth_token"],
                     company_name = "Shims",
@@ -12,5 +12,5 @@ LOGGED_IN= __login__obj.build_login_ui()
 
 if LOGGED_IN == True:
 
-   st.markdown("Your Streamlit Application Begins here!")
+   st.markdown("### Your Streamlit Application Begins here!")
                                       
