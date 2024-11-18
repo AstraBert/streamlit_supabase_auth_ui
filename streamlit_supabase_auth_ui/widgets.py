@@ -115,7 +115,8 @@ class __login__:
             unique_username_check = check_unique_usr(username_sign_up)
 
             password_sign_up = st.text_input("Password *", placeholder = 'Create a strong password', type = 'password')
-
+            password_sign_up1 = st.text_input("Confirm password *", placeholder = 'Confirm your password', type = 'password')
+            passwords_are_equal = password_sign_up == password_sign_up1
             st.markdown("###")
             sign_up_submit_button = st.form_submit_button(label = 'Register')
 
@@ -132,6 +133,9 @@ class __login__:
                 elif unique_username_check == False:
                     st.error(f'Sorry, username {username_sign_up} already exists!')
                 
+                elif passwords_are_equal == False:
+                    st.error("The two provided passwords do not match!")
+                
                 elif unique_username_check == None:
                     st.error('Please enter a non - empty Username!')
 
@@ -139,9 +143,10 @@ class __login__:
                     if valid_email_check == True:
                         if unique_email_check == True:
                             if unique_username_check == True:
-                                register_new_usr(name_sign_up, email_sign_up, username_sign_up, password_sign_up)
-                                welcome_w_email(self.auth_token, username_sign_up, email_sign_up, self.company_name)
-                                st.success("Registration Successful!")
+                                if passwords_are_equal == True:
+                                    register_new_usr(name_sign_up, email_sign_up, username_sign_up, password_sign_up)
+                                    welcome_w_email(self.auth_token, username_sign_up, email_sign_up, self.company_name)
+                                    st.success("Registration Successful!")
 
 
     def forgot_password(self) -> None:
@@ -296,7 +301,5 @@ class __login__:
         
         return st.session_state['LOGGED_IN']
 
-# Author: Gauri Prabhakar
-# GitHub: https://github.com/GauriSP10/streamlit_login_auth_ui
 
 

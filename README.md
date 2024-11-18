@@ -4,10 +4,10 @@
 </div>
 <br>
 <div align="center">
-    <img src="https://img.shields.io/github/languages/top/AstraBert/streamlit_supabase_auth_ui" alt="GitHub top language">
     <img src="https://img.shields.io/github/commit-activity/t/AstraBert/streamlit_supabase_auth_ui" alt="GitHub commit activity">
     <img src="https://img.shields.io/pypi/pyversions/streamlit_supabase_auth_ui" alt="Static Badge">
-    <img src="https://img.shields.io/badge/Release-v0.0.0-blue" alt="Static Badge">
+    <img src="https://static.pepy.tech/badge/streamlit-supabase-auth-ui" alt="PyPI Downloads">
+    <img src="https://img.shields.io/badge/Release-v0.0.1.post4-blue" alt="Static Badge">
     <br>
     <br>
     <img src="./imgs/supabase_logo.png" alt="Supabase Logo" width="100" style="margin-right: 10px;">
