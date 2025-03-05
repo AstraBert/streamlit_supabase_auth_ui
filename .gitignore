@@ -1,4 +1,7 @@
 streamlit-app/
 streamlit_supabase_auth_ui/__pycache__/
+pypi_package/dist/
+pypi_package/src/streamlit_supabase_auth_ui.egg-info/
+.mypy_cache/
 
 # REMEMBER TO INCLUDE ALSO .streamlit/secrets.toml IN YOUR .gitignore WHEN PUSHING TO PUBLIC/SHARED REPOSITORIES!

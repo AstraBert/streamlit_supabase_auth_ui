@@ -8,7 +8,7 @@ __login__obj = __login__(auth_token = st.secrets["courier_auth_token"],
                     hide_footer_bool = False,
                     lottie_url = 'https://assets2.lottiefiles.com/packages/lf20_jcikwtux.json')
 
-LOGGED_IN= __login__obj.build_login_ui()
+LOGGED_IN = __login__obj.build_login_ui()
 
 if LOGGED_IN == True:
 
