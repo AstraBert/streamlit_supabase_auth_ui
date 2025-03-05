@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "streamlit-supabase-auth-ui"
+version = "0.1.0"
+authors = [
+    { name="Clelia Astra Bertelli", email="astraberte9@gmail.com" },
+]
+description = "Seamless Supabase authentication for seamless Streamlit apps"
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    'requests == 2.32.3',
+    'streamlit == 1.39.0',
+    'streamlit-cookies-manager == 0.2.0',
+    'streamlit-lottie == 0.0.5',
+    'streamlit-option-menu == 0.4.0',
+    'supabase == 2.9.1',
+    'trycourier == 6.2.0',
+]
+
+[project.urls]
+Homepage = "https://github.com/AstraBert/streamlit_supabase_auth_ui"
+Issues = "https://github.com/AstraBert/streamlit_supabase_auth_ui/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["streamlit_supabase_auth_ui*"]
+
+[options.package_data]
+streamlit_supabase_auth_ui = ["*"]
