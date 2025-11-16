@@ -36,17 +36,14 @@ def welcome_w_email(auth_token: str, username_forgot_passwd: str, email_forgot_p
     }
     )
 
-def check_usr_pass(username: str, password: str) -> bool | None:
+def check_usr_pass(username: str, password: str) -> bool:
     """
     Authenticates the username and password.
     """
     query = supabase.from_("user_authentication").select("*").eq("username", username).eq("password", ph.hash(password)).execute()
     if len(query.data) > 0:
-        if query.data[0]["last_logout"] < query.data[0]["last_login"]:
-            return None
-        else:
-            supabase.table("user_authentication").update({"last_login": time.time()}).eq("username", username).execute()
-            return True
+        supabase.table("user_authentication").update({"last_login": time.time()}).eq("username", username).execute()
+        return True
     return False
 
 
