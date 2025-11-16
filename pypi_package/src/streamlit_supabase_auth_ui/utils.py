@@ -42,11 +42,8 @@ def check_usr_pass(username: str, password: str) -> bool | None:
     """
     query = supabase.from_("user_authentication").select("*").eq("username", username).eq("password", ph.hash(password)).execute()
     if len(query.data) > 0:
-        if query.data[0]["last_logout"] < query.data[0]["last_login"]:
-            return None
-        else:
-            supabase.table("user_authentication").update({"last_login": time.time()}).eq("username", username).execute()
-            return True
+        supabase.table("user_authentication").update({"last_login": time.time()}).eq("username", username).execute()
+        return True
     return False
 
 
