@@ -36,7 +36,7 @@ def welcome_w_email(auth_token: str, username_forgot_passwd: str, email_forgot_p
     }
     )
 
-def check_usr_pass(username: str, password: str) -> bool | None:
+def check_usr_pass(username: str, password: str) -> bool:
     """
     Authenticates the username and password.
     """
